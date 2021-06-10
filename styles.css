@@ -28,6 +28,8 @@ body {
   align-items: center;
   background-image: linear-gradient(yellow, red);
   width: 20%;
+  font-size: 24px;
+
 }
 .left-bar{
   display: flex;
@@ -35,6 +37,7 @@ body {
   align-items: center;
   background-image: linear-gradient(red, yellow);
   width: 20%;
+  font-size: 24px;
 
  }
 .grid {
@@ -43,7 +46,9 @@ body {
   column-gap: 10px;
   row-gap: 10px;
   width: 70%;
-  height: 50%;
+  height: 70%;
+  border: 70px solid white;
+  /* i don't think border is the move, i think it will be in the .main class*/
 }
 
 .cell{
