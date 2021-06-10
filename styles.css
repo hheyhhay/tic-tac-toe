@@ -10,14 +10,17 @@ body {
   height: 100%;
   font-family: 'Open Sans';
   font-size: 16px;
+  background-image: linear-gradient(green, purple);
 }
 
 .middle {
   display: flex;
   flex-direction: column;
   align-items: center;
-    border: 2px solid pink;
+    /* border: 2px solid pink; */
     width: 60%;
+  padding: 10px solid white
+
 }
 .right-bar {
   display: flex;
@@ -31,27 +34,21 @@ body {
   flex-direction: column;
   align-items: center;
   background-image: linear-gradient(red, yellow);
-
   width: 20%;
 
  }
-.grid{
-  /* display: flex; */
-  flex-wrap: wrap;
-  /* grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr; */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 10px;
+  row-gap: 10px;
   width: 70%;
   height: 50%;
 }
-.cell {
-  color: pink;
-  font-size: 24px;
-  border: 3px solid black ;
 
+.cell{
 
-  text-align: center
-}
-.cell-1{
-  border-bottom: 3px solid black;
-  border-right: 3px solid black;
+  background-color: white;
+  text-align: center;
+  font-size: 70px;
 }
