@@ -22,29 +22,43 @@ class Game{
     this.placement.splice(indexPlayed, 1, this.icon) // will update the array
     return (this.icon)
   };
-  checksWinner(){
+  checksForValue(comparsion1, comparsion2, comparsion3){
     for (var i = 0; i<this.placement.length; i++){
       if (this.placement[i] !== ""){
-        if (this.placement[1] === this.placement[2] && this.placement[2]=== this.placement[3]){
-          return(`${this.icon} is the winner`)
-        } if (this.placement[3] === this.placement[4] && this.placement[5]){
-          return(`${this.icon} is the winner`)
-        } if (this.placement[6] === this.placement[7] && this.placement[8]){
-          return(`${this.icon} is the winner`)
-        } if (this.placement[6] === this.placement[4] && this.placement[2]){
-          return(`${this.icon} is the winner`)
-        } if (this.placement[0] === this.placement[4] && this.placement[8]){
-          return(`${this.icon} is the winner`)
-        } if (this.placement[0] === this.placement[3] && this.placement[6]){
-          return(`${this.icon} is the winner`)
-        }  if (this.placement[1] === this.placement[4] && this.placement[7]){
-          return(`${this.icon} is the winner`)
-        } if (this.placement[2] === this.placement[5] && this.placement[8]){
-          return(`${this.icon} is the winner`)
-        } else { return('Tis a draw')}
-        } else { return 'no winner, next turn'}
-      }
+        console.log('hi')
+        return(`${this.icon} is the winner`)
+      } else if (this.placement[i] === "") {
+        return 'maybe?'}
     }
+  }
+  checksWinner(){
+
+        if (this.placement[1] === this.placement[2] && this.placement[2]=== this.placement[3]){
+          this.checksForValue(this.placement[1], this.placement[2], this.placement[3] )
+        } if (this.placement[3] === this.placement[4] && this.placement[5]){
+          this.checksForValue(this.placement[3], this.placement[4], this.placement[5])
+        } if (this.placement[6] === this.placement[7] && this.placement[8]){
+          this.checksForValue(this.placement[6], this.placement[7], this.placement[8])
+        } if (this.placement[6] === this.placement[4] && this.placement[2]){
+          this.checksForValue(this.placement[6], this.placement[4], this.placement[2])
+        } if (this.placement[0] === this.placement[4] && this.placement[8]){
+          this.checksForValue(this.placement[0], this.placement[4], this.placement[8])
+        } if (this.placement[0] === this.placement[3] && this.placement[6]){
+          this.checksForValue(this.placement[0], this.placement[3], this.placement[6])
+        }  if (this.placement[1] === this.placement[4] && this.placement[7]){
+          this.checksForValue(this.placement[1], this.placement[4], this.placement[7])
+        } if (this.placement[2] === this.placement[5] && this.placement[8]){
+          this.checksForValue(this.placement[2], this.placement[5], this.placement[8])
+        } else {
+            for (var i = 0; i<this.placement.length; i++){
+              if (this.placement[i] === "") {
+                return 'next turn'
+              }
+            }
+            }
+
+      }
+
 
 }
 // A game.js file that contains a Game class.
