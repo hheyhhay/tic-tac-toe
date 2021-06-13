@@ -7,16 +7,42 @@ class Game{
     this.hasWinner = false;
 
   }
-  intainciatePlayers(){
-    var player2 = new Player('dog', "🐶")
-    var player1 = new Player('cat', "🐱")
-    var game1 = new Game(player1, player2)
+  tryingToLog() {
+    console.log('hello')
+    console.log('player1', this.player1);
+    console.log('this.player1.token', this.player1.token)
+    // console.log('player1[player1.token]', this.player1[player1.token]);
+    console.log("player1[token]",this.player1[token]);
+    // console.log('player1.token'. player1.token)
   }
+
+  // intainciatePlayers(){
+  //   var player2 = new Player('dog', "🐶")
+  //   var player1 = new Player('cat', "🐱")
+  //   var game1 = new Game(player1, player2)
+  // }
+
+  // not achually updating the player, just updating the icon
   updatesPlayer(){
-    if (this.icon === player1.token){
-      this.icon = player2.token
-    } else { this.icon = player1.token }
-  }
+    if (!this.player1.turn) {
+      this.player1.turn = true;
+      this.player2.turn = false;
+      this.icon = this.player1.token
+
+    } else {
+      this.player1.turn = false;
+      this.player2.turn = true;
+      this.icon = this.player2.token
+    }
+    }
+//     if (this.icon === this.player1.token){ // if the current icon is the same as Player1 token
+//       this.icon = this.player2.token; // change icon to player 2s
+//       console.log(this.icon)
+//     } else { this.icon = this.player1.token
+//       console.log(this.icon) } // if it is not, change it to player1's token
+// }
+//
+
 
   trackGame(indexPlayed){ // example they choose [1]
     this.placement.splice(indexPlayed, 1, this.icon) // will update the array
