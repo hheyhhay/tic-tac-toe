@@ -2,6 +2,7 @@ class Player{
   constructor(id, token){
     this.id = id; // dog or cat
     this.token = token ;
+    this.isTurn = false;
     this.wins = 0; //going to update each time the player wins ++
   }
   saveWinsToStorage(){
