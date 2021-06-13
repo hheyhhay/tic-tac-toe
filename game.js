@@ -49,16 +49,23 @@ class Game{
     return (this.icon)
   };
   checksForValue(comparsion1, comparsion2, comparsion3){
-    for (var i = 0; i<this.placement.length; i++){
-      if (this.placement[i] !== ""){
-        console.log('hi')
-        return(`${this.icon} is the winner`)
-      } else if (this.placement[i] === "") {
-        return 'maybe?'}
+    console.log('checking for values')
+    if (comparsion1 || comparsion2 || comparsion3 !== "") {
+        console.log('checking for three non empty strings')
+        return`${this.icon} is the winner`
+    } else { console.log('some zero')
+      return "this is a run of strings"
     }
+    // for (var i = 0; i<this.placement.length; i++){
+    //   if (this.placement[i] !== ""){
+    //     console.log('hi from checks Value')
+    //     return(`${this.icon} is the winner`)
+    //   } else if (this.placement[i] === "") {
+    //     return 'maybe?'}
+    // }
   }
   checksWinner(){
-
+    console.log('checking for winner')
         if (this.placement[1] === this.placement[2] && this.placement[2]=== this.placement[3]){
           this.checksForValue(this.placement[1], this.placement[2], this.placement[3] )
         } if (this.placement[3] === this.placement[4] && this.placement[5]){
@@ -78,6 +85,7 @@ class Game{
         } else {
             for (var i = 0; i<this.placement.length; i++){
               if (this.placement[i] === "") {
+                console.log('next turn')
                 return 'next turn'
               }
             }
