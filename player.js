@@ -6,7 +6,6 @@ class Player{
     this.wins = 0; //going to update each time the player wins ++
   }
   saveWinsToStorage(){
-
   }
   retrieveWinsFromStorage(){
   }

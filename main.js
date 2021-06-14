@@ -17,7 +17,6 @@ window.addEventListener('load', intializeGame);
 
 
 
-// on page load, the default player is dogPlayer.
 function intializeGame(){
   currentGame.updatesPlayer();
   renderBoard();
@@ -30,8 +29,6 @@ function getTarget(event){
   }
   return event.target;
 }
-
-
 
 function updateCell(event) {
   selectedCell = event.target.parentNode.parentNode;
@@ -52,7 +49,7 @@ function updateCell(event) {
 
 function gameProcess(){
   var currentWinner
-  currentGame.checksWinner();
+  currentGame.checksForWinner();
   if (currentGame.hasWinner === true){
     currentWinner = currentGame.winner;
     updateWinner(currentWinner);
