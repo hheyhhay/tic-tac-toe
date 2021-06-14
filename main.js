@@ -6,15 +6,6 @@ var newGame = new Game(dogPlayer, catPlayer);
 //instanciates 2 new players and a new game.
 
 // sets up querySelectors
-var index0 = document.getElementById('cell-0');
-var index1 = document.getElementById('cell-1');
-var index2 = document.getElementById('cell-2');
-var index3 = document.getElementById('cell-3');
-var index4 = document.getElementById('cell-4');
-var index5 = document.getElementById('cell-5');
-var index6 = document.getElementById('cell-6');
-var index7 = document.getElementById('cell-7');
-var index8 = document.getElementById('cell-8');
 var gameBoard = document.getElementById('gameboard');
 var middleSection = document.getElementById('middle');
 var changeTurnText = document.getElementById('turn-txt');
@@ -26,17 +17,12 @@ middleSection.addEventListener('click', updateCell);
 window.addEventListener('load', intializeGame);
 
 
-console.log(newGame.placement)
-console.log(newGame.placement.length)
-console.log(newGame.icon);
 
-
-// on page load, the default player is player1.
+// on page load, the default player is dogPlayer.
 function intializeGame(){
-  console.log('!')
   newGame.updatesPlayer();
   renderBoard();
-  // newGame.player1.isTurn = true;
+  // newGame.dogPlayer.isTurn = true;
 }
 
 function getTarget(event){
@@ -147,8 +133,8 @@ function renderBoard(){
 
 
 function updateWinner(winningPlayer){
-  if (winningPlayer === newGame.player1){
-    dogWins.innerText = `${newGame.player1.wins} wins!`
+  if (winningPlayer === newGame.dogPlayer){
+    dogWins.innerText = `${newGame.dogPlayer.wins} wins!`
   } else if (winningPlayer === newGame.player2){
     catWins.innerText =`${newGame.player2.wins} wins`
     }

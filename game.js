@@ -1,22 +1,22 @@
 class Game{
-  constructor(player1, player2){
-    this.player1 = player1;
-    this.player2 = player2;
-    this.icon = player1.token; // default cat starts
+  constructor(dogPlayer, catPlayer){
+    this.dogPlayer = dogPlayer;
+    this.catPlayer = catPlayer;
+    this.icon = dogPlayer.token; // default cat starts
     this.placement = ["","","", "","","","","","",];
     this.hasWinner = false;
     this.winner;
   }
 
   updatesPlayer(){
-    if (!this.player1.turn) {
-      this.player1.turn = true;
-      this.player2.turn = false;
-      this.icon = this.player1.token
+    if (!this.dogPlayer.turn) {
+      this.dogPlayer.turn = true;
+      this.catPlayer.turn = false;
+      this.icon = this.dogPlayer.token
     } else {
-      this.player1.turn = false;
-      this.player2.turn = true;
-      this.icon = this.player2.token
+      this.dogPlayer.turn = false;
+      this.catPlayer.turn = true;
+      this.icon = this.catPlayer.token
     }
   }
 
@@ -26,14 +26,14 @@ class Game{
   };
   checksForValue(comparsion1, comparsion2, comparsion3){
     if (comparsion1 || comparsion2 || comparsion3 !== "") {
-        if (this.icon === this.player1.token){
-          this.player1.wins++
-          this.winner = this.player1;
+        if (this.icon === this.dogPlayer.token){
+          this.dogPlayer.wins++
+          this.winner = this.dogPlayer;
           this.hasWinner = true;
           return
-        } else if( this.icon === this.player2.token){
-          this.player2.wins++;
-          this.winner = this.player2;
+        } else if( this.icon === this.catPlayer.token){
+          this.catPlayer.wins++;
+          this.winner = this.catPlayer;
           this.hasWinner = true;
           return
         }
