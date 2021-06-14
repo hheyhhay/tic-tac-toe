@@ -7,7 +7,7 @@ var currentGame = new Game(dogPlayer, catPlayer);
 // sets up querySelectors
 var gameBoard = document.getElementById('gameboard');
 var middleSection = document.getElementById('middle');
-var changeTurnText = document.getElementById('turn-txt');
+var headerText = document.getElementById('turn-txt');
 var dogWins = document.getElementById('dog-wins')
 var catWins = document.getElementById('cat-wins')
 
@@ -87,7 +87,7 @@ function renderHeader(){
   } else if (currentGame.hasWinner === true){
       headerText = ` ${currentGame.winner.token} is winner - click any square to restart`
   }
-  changeTurnText.innerText = headerText;
+  headerText.innerText = headerText;
 }
 
 

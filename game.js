@@ -2,7 +2,7 @@ class Game{
   constructor(dogPlayer, catPlayer){
     this.dogPlayer = dogPlayer;
     this.catPlayer = catPlayer;
-    this.icon = dogPlayer.token; // default cat starts
+    this.icon = dogPlayer.token;
     this.placement = ["","","", "","","","","","",];
     this.hasWinner = false;
     this.winner;
