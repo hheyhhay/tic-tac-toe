@@ -63,40 +63,14 @@ function updateCell(event) {
   target = getTarget(event)
   if (newGame.hasWinner){
     clearBoard()
+  } else if ( !newGame.placement.includes("") && !newGame.hasWinner){
+    clearBoard();
   }
-  // if index0 is clicked, the console logs 'hi',
-  // updates the DM (this.placement), then it changes who the player is, then it renders/
-  //the board w/ the updated information.
-
-  // I think i can refractor this w/ an array?
-  if(event.target.className === "cell cell-0"){
-    console.log('hi')
-    newGame.trackGame('0');
-    gameProcess()
-  } if (event.target.className === 'cell cell-1'){
-    newGame.trackGame('1');
-    gameProcess()
-  } if (event.target.className === 'cell cell-2'){
-    newGame.trackGame('2');
-    gameProcess()
-  } if (event.target.className === 'cell cell-3'){
-    newGame.trackGame('3');
-    gameProcess()
-  }if (event.target.className === 'cell cell-4'){
-    newGame.trackGame('4');
-    gameProcess()
-  }if (event.target.className === 'cell cell-5'){
-    newGame.trackGame('5');
-    gameProcess()
-  }if (event.target.className === 'cell cell-6'){
-    newGame.trackGame('6');
-    gameProcess()
-  } if (event.target.className === 'cell cell-7'){
-    newGame.trackGame('7');
-    gameProcess()
-  } if (event.target.className === 'cell cell-8'){
-    newGame.trackGame('8');
-    gameProcess()
+  for (var i = 0; i<newGame.placement.length; i++){
+    if(event.target.className === `cell cell-${i}`){
+      newGame.trackGame(i)
+      gameProcess()
+    }
   }
 };
 
@@ -126,7 +100,7 @@ function renderHeader(){
   } else if (newGame.hasWinner === false){
     headerText = `It's ${newGame.icon} turn`
   } else if (newGame.hasWinner === true){
-      headerText = ` ${newGame.winner.token} is winner :)`
+      headerText = ` ${newGame.winner.token} is winner - click any square to restart`
   }
   changeTurnText.innerText = headerText;
 }
@@ -185,11 +159,11 @@ function updateWinner(winningPlayer){
     renderBoard();
   }
 
-function checksForDraw(){
-  if(!newGame.placement.includes("") && !newGame.hasWinner){ //icons are full & its a draw
-
-  }
-}
+// function checksForDraw(){ // should this be in Game Class?
+//   if(!newGame.placement.includes("") && !newGame.hasWinner){ //icons are full & its a draw
+//       clearBoard();
+//   }
+// }
 
 
 
