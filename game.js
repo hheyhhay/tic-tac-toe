@@ -5,6 +5,11 @@ class Game{
     this.icon = player1.token; // default cat starts
     this.placement = ["","","", "","","","","","",];
     this.hasWinner = false;
+    this.winner;
+
+    // this.players = [player1, player2]
+    // this.currentPlayer = player1 || player2;
+    // this.icon = player1.token || player2.token;
 
   }
 
@@ -27,8 +32,12 @@ class Game{
   checksForValue(comparsion1, comparsion2, comparsion3){
     console.log('checking for values')
     if (comparsion1 || comparsion2 || comparsion3 !== "") {
-        console.log('checking for three non empty strings')
-        console.log(`${this.icon} is the winner`)
+        if (this.icon === this.player1.token){
+          this.player1.wins++
+        } else if( this.icon === this.player2.token){
+          this.player2.wins++;
+        }
+        this.hasWinner = true;
         return`${this.icon} is the winner`
     } else { console.log('some zero')
       return "this is a run of strings"
@@ -37,8 +46,7 @@ class Game{
   checksForEmpty(){
     for (var i = 0; i<this.placement.length; i++){
       if (this.placement[i] === "") {
-        console.log('next turn')
-        return 'next turn'
+          return 'next turn'
       }
   }
 }
@@ -71,6 +79,6 @@ class Game{
           console.log('8')
         } else { this.checksForEmpty();
             }
-          }
+      }
 
 }
