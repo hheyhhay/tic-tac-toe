@@ -25,62 +25,48 @@ class Game{
     return (this.icon)
   };
   checksForValue(comparsion1, comparsion2, comparsion3){
-    console.log('checking for values')
     if (comparsion1 || comparsion2 || comparsion3 !== "") {
         if (this.icon === this.player1.token){
           this.player1.wins++
           this.winner = this.player1;
-          console.log(this.winner)
           this.hasWinner = true;
           return
         } else if( this.icon === this.player2.token){
           this.player2.wins++;
           this.winner = this.player2;
-          console.log(this.winner)
           this.hasWinner = true;
           return
         }
 
         return`${this.icon} is the winner`
-    } else { console.log('some zero')
+    } else {
       return "this is a run of strings"
     }
   }
   checksForEmpty(){
     for (var i = 0; i<this.placement.length; i++){
       if (this.placement[i] === "") {
-        console.log('empty space')
           return 'next turn'
       }
   }
 }
   checksWinner(){
-    console.log('placement array inside checksWinner', this.placement)
-    console.log('checking for winner')
         if (this.placement[1] === this.placement[2] && this.placement[2]=== this.placement[0]){
           this.checksForValue(this.placement[1], this.placement[2], this.placement[0])
-          console.log('1')
         } if (this.placement[3] === this.placement[4] && this.placement[5] === this.placement[4]){
           this.checksForValue(this.placement[3], this.placement[4], this.placement[5])
-          console.log('2')
         } if (this.placement[6] === this.placement[7] && this.placement[8] === this.placement[7]){
           this.checksForValue(this.placement[6], this.placement[7], this.placement[8])
-          console.log('3')
         } if (this.placement[6] === this.placement[4] && this.placement[2] === this.placement[4]){
           this.checksForValue(this.placement[6], this.placement[4], this.placement[2])
-          console.log('4')
         } if (this.placement[0] === this.placement[4] && this.placement[8] === this.placement[4]){
           this.checksForValue(this.placement[0], this.placement[4], this.placement[8])
-          console.log('5')
         } if (this.placement[0] === this.placement[3] && this.placement[6] === this.placement[3]){
           this.checksForValue(this.placement[0], this.placement[3], this.placement[6])
-          console.log('6')
         }  if (this.placement[1] === this.placement[4] && this.placement[7]=== this.placement[4]){
           this.checksForValue(this.placement[1], this.placement[4], this.placement[7])
-          console.log('7')
         } if (this.placement[2] === this.placement[5] && this.placement[8]=== this.placement[5]){
           this.checksForValue(this.placement[2], this.placement[5], this.placement[8])
-          console.log('8')
         } else { this.checksForEmpty();
             }
       }
