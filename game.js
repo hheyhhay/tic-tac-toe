@@ -6,11 +6,6 @@ class Game{
     this.placement = ["","","", "","","","","","",];
     this.hasWinner = false;
     this.winner;
-
-    // this.players = [player1, player2]
-    // this.currentPlayer = player1 || player2;
-    // this.icon = player1.token || player2.token;
-
   }
 
   updatesPlayer(){
@@ -34,10 +29,18 @@ class Game{
     if (comparsion1 || comparsion2 || comparsion3 !== "") {
         if (this.icon === this.player1.token){
           this.player1.wins++
+          this.winner = this.player1;
+          console.log(this.winner)
+          this.hasWinner = true;
+          return
         } else if( this.icon === this.player2.token){
           this.player2.wins++;
+          this.winner = this.player2;
+          console.log(this.winner)
+          this.hasWinner = true;
+          return
         }
-        this.hasWinner = true;
+
         return`${this.icon} is the winner`
     } else { console.log('some zero')
       return "this is a run of strings"
@@ -46,6 +49,7 @@ class Game{
   checksForEmpty(){
     for (var i = 0; i<this.placement.length; i++){
       if (this.placement[i] === "") {
+        console.log('empty space')
           return 'next turn'
       }
   }
@@ -56,10 +60,10 @@ class Game{
         if (this.placement[1] === this.placement[2] && this.placement[2]=== this.placement[0]){
           this.checksForValue(this.placement[1], this.placement[2], this.placement[0])
           console.log('1')
-        } if (this.placement[3] === this.placement[4] && this.placement[5]){
+        } if (this.placement[3] === this.placement[4] && this.placement[5] === this.placement[4]){
           this.checksForValue(this.placement[3], this.placement[4], this.placement[5])
           console.log('2')
-        } if (this.placement[6] === this.placement[7] && this.placement[8]){
+        } if (this.placement[6] === this.placement[7] && this.placement[8] === this.placement[7]){
           this.checksForValue(this.placement[6], this.placement[7], this.placement[8])
           console.log('3')
         } if (this.placement[6] === this.placement[4] && this.placement[2] === this.placement[4]){
