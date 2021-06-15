@@ -5,6 +5,7 @@ class Game{
     this.icon = dogPlayer.token;
     this.placement = ["","","", "","","","","","",];
     this.hasWinner = false;
+    this.isDraw = false;
     this.winner;
   }
 
@@ -20,10 +21,21 @@ class Game{
     }
   }
 
-  trackGame(indexPlayed){ 
-    this.placement.splice(indexPlayed, 1, this.icon) // will update the array
+  trackGame(indexPlayed){
+    if (this.placement[indexPlayed]===""){
+      this.placement.splice(indexPlayed, 1, this.icon)
+      //disable updates player.
+} else  {return}
+    // this.checksForEmpty(indexPlayed);
+     // will update the array
     // return (this.icon)
   };
+  checksForEmpty(indexPlayed){
+    if (indexPlayed !== "") {
+      console.log('?')
+      return
+    }
+  }
 
 //   checksForEmpty(){
 //     for (var i = 0; i<this.placement.length; i++){
@@ -51,6 +63,7 @@ class Game{
         } if (this.placement[2] === this.placement[5] && this.placement[8]=== this.placement[5]){
           this.checksForValue(this.placement[2], this.placement[5], this.placement[8])
         }
+        this.checksForDraw()
         // } else { this.checksForEmpty();
         //     }
   }
@@ -67,6 +80,16 @@ class Game{
           this.hasWinner = true;
           return
         }
+    }
+  }
+  clearBoard(){
+    currentGame.placement = ["","","", "","","","","","",];
+    currentGame.hasWinner = false;
+  }
+
+  checksForDraw(){
+    if (!this.placement.includes("")&& !this.hasWinner){
+      this.isDraw = true;
     }
   }
 }

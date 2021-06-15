@@ -40,9 +40,11 @@ function updateCell(event) {
   var target;
   target = getTarget(event)
   if (currentGame.hasWinner){
-    clearBoard()
-  } else if ( !currentGame.placement.includes("") && !currentGame.hasWinner){
-    clearBoard();
+    currentGame.clearBoard();
+    renderBoard();
+  } else if ( currentGame.isDraw){
+    currentGame.clearBoard();
+    renderBoard();
   }
   for (var i = 0; i<currentGame.placement.length; i++){
     if(event.target.className === `cell cell-${i}`){
@@ -85,7 +87,7 @@ function renderGameBoard(){
 
 function renderHeader(){
   var headerText = "";
-  if(!currentGame.placement.includes("") && !currentGame.hasWinner){ //icons are full & its a draw
+  if(currentGame.isDraw){ //icons are full & its a draw
       headerText = `It's a Draw - click any square to reset game`;
   } else if (currentGame.hasWinner === false){
     headerText = `It's ${currentGame.icon} turn`;
@@ -100,14 +102,9 @@ function updateWinner(winningPlayer){
     dogWins.innerText = `${currentGame.dogPlayer.wins} wins!`
     currentGame.dogPlayer.saveWinsToStorage();
   } else if (winningPlayer === currentGame.catPlayer){
-    catWins.innerText =`${currentGame.catPlayer.wins} wins`
+    catWins.innerText =`${currentGame.catPlayer.wins} wins!`
     currentGame.catPlayer.saveWinsToStorage();
     }
-  }
-  function clearBoard(){
-    currentGame.placement = ["","","", "","","","","","",];
-    currentGame.hasWinner = false;
-    renderBoard();
   }
 
 
