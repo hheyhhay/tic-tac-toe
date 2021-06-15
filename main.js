@@ -27,7 +27,7 @@ function intializeGame(){
 
   // currentGame.dogPlayer.isTurn = true;
 }
-x
+
 function getTarget(event){
   if (!event){
     event = window.event;
@@ -98,11 +98,9 @@ function renderHeader(){
 function updateWinner(winningPlayer){
   if (winningPlayer === currentGame.dogPlayer){
     dogWins.innerText = `${currentGame.dogPlayer.wins} wins!`
-    currentGame.dogPlayer.makingThingsWork()
     currentGame.dogPlayer.saveWinsToStorage();
   } else if (winningPlayer === currentGame.catPlayer){
     catWins.innerText =`${currentGame.catPlayer.wins} wins`
-    currentGame.catPlayer.makingThingsWork();
     currentGame.catPlayer.saveWinsToStorage();
     }
   }
