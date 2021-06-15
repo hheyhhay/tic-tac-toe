@@ -41,6 +41,7 @@ function updateCell(event) {
   }
   for (var i = 0; i<currentGame.placement.length; i++){
     if(event.target.className === `cell cell-${i}`){
+      //Do i want to change this to IDS?
       currentGame.trackGame(i)
       gameProcess()
     }
@@ -92,8 +93,12 @@ function renderHeader(){
 function updateWinner(winningPlayer){
   if (winningPlayer === currentGame.dogPlayer){
     dogWins.innerText = `${currentGame.dogPlayer.wins} wins!`
+    currentGame.dogPlayer.makingThingsWork()
+    currentGame.dogPlayer.saveWinsToStorage();
   } else if (winningPlayer === currentGame.catPlayer){
     catWins.innerText =`${currentGame.catPlayer.wins} wins`
+    currentGame.catPlayer.makingThingsWork();
+    currentGame.catPlayer.saveWinsToStorage();
     }
   }
   function clearBoard(){
