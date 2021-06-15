@@ -19,10 +19,15 @@ window.addEventListener('load', intializeGame);
 
 function intializeGame(){
   currentGame.updatesPlayer();
+  currentGame.dogPlayer.retrieveWinsFromStorage()
+  currentGame.catPlayer.retrieveWinsFromStorage();
+  updateWinner(catPlayer)
+  updateWinner(dogPlayer)
   renderBoard();
+
   // currentGame.dogPlayer.isTurn = true;
 }
-
+x
 function getTarget(event){
   if (!event){
     event = window.event;

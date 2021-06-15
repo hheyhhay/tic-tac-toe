@@ -11,9 +11,15 @@ class Player{
     localStorage.setItem(`${this.id}`, strPlayer);
   }
   retrieveWinsFromStorage(){
-      var = retrievedPlayer;
+      var retrievedPlayer;
       retrievedPlayer =  localStorage.getItem(`${this.id}`)
-      var parsedPlayer = JSON.parse(retrievedPlayer); 
+      var parsedPlayer = JSON.parse(retrievedPlayer);
+      console.log(parsedPlayer, 'inside')
+      console.log(this.wins, parsedPlayer.wins)
+      var updatedWins;
+      updatedWins = parsedPlayer.wins;
+      this.wins = updatedWins;
+      console.log(this, 'from inside')
   }
   makingThingsWork(){
     console.log(`am i working?`)
@@ -22,13 +28,3 @@ class Player{
     console.log(strPlayer)
   }
 };
-// constructor - properties should include: id (ex: 'one'), token (ex: '⭐️'), wins (ex: [])
-// saveWinsToStorage
-// retrieveWinsFromStorage
-
-
-// example instantiation:
-// var dogPlayer = new Player('dog', 🐶)
-
-
-// "🐶"|| "🐱"
