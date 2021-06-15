@@ -19,7 +19,12 @@ window.addEventListener('load', intializeGame);
 
 function intializeGame(){
   currentGame.updatesPlayer();
+  currentGame.dogPlayer.retrieveWinsFromStorage()
+  currentGame.catPlayer.retrieveWinsFromStorage();
+  updateWinner(catPlayer)
+  updateWinner(dogPlayer)
   renderBoard();
+
   // currentGame.dogPlayer.isTurn = true;
 }
 
@@ -93,11 +98,9 @@ function renderHeader(){
 function updateWinner(winningPlayer){
   if (winningPlayer === currentGame.dogPlayer){
     dogWins.innerText = `${currentGame.dogPlayer.wins} wins!`
-    currentGame.dogPlayer.makingThingsWork()
     currentGame.dogPlayer.saveWinsToStorage();
   } else if (winningPlayer === currentGame.catPlayer){
     catWins.innerText =`${currentGame.catPlayer.wins} wins`
-    currentGame.catPlayer.makingThingsWork();
     currentGame.catPlayer.saveWinsToStorage();
     }
   }
