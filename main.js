@@ -1,5 +1,4 @@
-var selectedCell;
-var dogPlayer = new Player("dog", "🐶");
+var dogPlayer = new Player("dog", "🐶"); // do we want to move the instanciation into Game Class?
 var catPlayer = new Player("cat", "🐱");
 var currentGame = new Game(dogPlayer, catPlayer);
 
@@ -36,7 +35,8 @@ function getTarget(event){
 }
 
 function updateCell(event) {
-  selectedCell = event.target.parentNode.parentNode;
+  // var selectedCell;
+  // selectedCell = event.target.parentNode.parentNode;
   var target;
   target = getTarget(event)
   if (currentGame.hasWinner){
