@@ -1,5 +1,4 @@
-var selectedCell;
-var dogPlayer = new Player("dog", "🐶");
+var dogPlayer = new Player("dog", "🐶"); // do we want to move the instanciation into Game Class?
 var catPlayer = new Player("cat", "🐱");
 var currentGame = new Game(dogPlayer, catPlayer);
 
@@ -10,6 +9,7 @@ var middleSection = document.getElementById('middle');
 var header = document.getElementById('turn-txt');
 var dogWins = document.getElementById('dog-wins')
 var catWins = document.getElementById('cat-wins')
+var instruction = document.getElementById('instruction-txt')
 
 //event listeners
 middleSection.addEventListener('click', updateCell);
@@ -24,8 +24,7 @@ function intializeGame(){
   updateWinner(catPlayer)
   updateWinner(dogPlayer)
   renderBoard();
-
-  // currentGame.dogPlayer.isTurn = true;
+  currentGame.start = false;
 }
 
 function getTarget(event){
@@ -36,16 +35,17 @@ function getTarget(event){
 }
 
 function updateCell(event) {
-  selectedCell = event.target.parentNode.parentNode;
   var target;
   target = getTarget(event)
   if (currentGame.hasWinner){
-    clearBoard()
-  } else if ( !currentGame.placement.includes("") && !currentGame.hasWinner){
-    clearBoard();
+    currentGame.clearBoard();
+    renderBoard();
+  } else if ( currentGame.isDraw){
+    currentGame.clearBoard();
+    renderBoard();
   }
   for (var i = 0; i<currentGame.placement.length; i++){
-    if(event.target.className === `cell cell-${i}`){
+    if(event.target.id === `cell-${i}`){
       //Do i want to change this to IDS?
       currentGame.trackGame(i)
       gameProcess()
@@ -71,28 +71,36 @@ function renderBoard(){
 
 function renderGameBoard(){
     var gameBoardHTML = "";
-    gameBoardHTML=  `<div class="cell cell-0" id = "cell-0">${currentGame.placement[0]}</div>
-        <div class="cell cell-1">${currentGame.placement[1]}</div>
-        <div class="cell cell-2">${currentGame.placement[2]}</div>
-        <div class="cell cell-3">${currentGame.placement[3]}</div>
-        <div class="cell cell-4">${currentGame.placement[4]}</div>
-        <div class="cell cell-5">${currentGame.placement[5]}</div>
-        <div class="cell cell-6">${currentGame.placement[6]}</div>
-        <div class="cell cell-7">${currentGame.placement[7]}</div>
-        <div class="cell cell-8">${currentGame.placement[8]}</div>`
+    gameBoardHTML=  `<div class="cell" id="cell-0">${currentGame.placement[0]}</div>
+        <div class="cell" id="cell-1">${currentGame.placement[1]}</div>
+        <div class="cell" id="cell-2">${currentGame.placement[2]}</div>
+        <div class="cell" id="cell-3">${currentGame.placement[3]}</div>
+        <div class="cell" id="cell-4">${currentGame.placement[4]}</div>
+        <div class="cell" id="cell-5">${currentGame.placement[5]}</div>
+        <div class="cell" id="cell-6">${currentGame.placement[6]}</div>
+        <div class="cell" id="cell-7">${currentGame.placement[7]}</div>
+        <div class="cell" id="cell-8">${currentGame.placement[8]}</div>`
     gameBoard.innerHTML = gameBoardHTML
 };
 
 function renderHeader(){
   var headerText = "";
-  if(!currentGame.placement.includes("") && !currentGame.hasWinner){ //icons are full & its a draw
-      headerText = `It's a Draw - click any square to reset game`;
+  var instructionText = "Click any square to restart";
+  if (currentGame.start){
+    headerText = `It's ${currentGame.icon} turn`;
+    instructionText = `${currentGame.icon} Make your move!`
+  } else if(currentGame.isDraw){
+      headerText = `It's a draw`;
   } else if (currentGame.hasWinner === false){
     headerText = `It's ${currentGame.icon} turn`;
-  } else if (currentGame.hasWinner === true){
-      headerText = ` ${currentGame.winner.token} is winner - click any square to restart`;
+    instructionText = "";
+  } else if (currentGame.hasWinner){
+      headerText = ` ${currentGame.winner.token} is winner`;
+
+
   }
   header.innerText = headerText;
+  instruction.innerText = instructionText;
 };
 
 function updateWinner(winningPlayer){
@@ -100,18 +108,12 @@ function updateWinner(winningPlayer){
     dogWins.innerText = `${currentGame.dogPlayer.wins} wins!`
     currentGame.dogPlayer.saveWinsToStorage();
   } else if (winningPlayer === currentGame.catPlayer){
-    catWins.innerText =`${currentGame.catPlayer.wins} wins`
+    catWins.innerText =`${currentGame.catPlayer.wins} wins!`
     currentGame.catPlayer.saveWinsToStorage();
     }
   }
-  function clearBoard(){
-    currentGame.placement = ["","","", "","","","","","",];
-    currentGame.hasWinner = false;
-    renderBoard();
-  }
 
-
-
+// - click any square to restart
 
 
 
