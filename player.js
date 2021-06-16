@@ -16,6 +16,6 @@ class Player{
     if(!parsedPlayer){
       updatedWins = this.wins;
     } else { updatedWins = parsedPlayer.wins}
-    this.wins = updatedWins || 0;
+    this.wins = updatedWins;
   }
 };
