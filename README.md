@@ -62,6 +62,8 @@ A hand illustrated wireframe based off the comp given.
 ## Reflections
 Producing my first multiplayer interactive game by myself was both exciting and difficult. I am much more confident in my JavaScript and HTML writing skills than my CSS. I made sure I allowed for time at the end of the project to refractor my CSS to make the sections interact and flex with eachother. Handdrawing my wireframe helped me understand what sections went together and how the different sections interacted with eachother. For my next project, I would like to explore and use wireframe technology, like miro.com. For my JavaScript, I built the data model first in the Player and Game class that could be played using the console. After the classes were built, I developed the DOM in the main.js file to show the changes in the data model on the page. In the future, I would like to spend more time building the Data Model first. Once I connected it to the DOM I found several errors in my conditionals for winning the game. 
 
+As I continue on future projects, I want to focus on having clear and often commits and when working on a branch only work on the feature of that branch. I struggled with staying on branch-topic and found myself writing code that was outside the scope of the branch. 
+
 
 ## Project Specs
   - The project spec & rubric can be found [here](https://frontend.turing.edu/projects/module-1/tic-tac-toe-solo.html)
