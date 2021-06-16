@@ -6,10 +6,12 @@ Mod 1: Final Solo Project
   - [Introduction](#introduction)
   - [Technologies](#technologies)
   - [Features](#features)
+  - [Code Architecture](#code-architecture)
   - [Illustrations](#illustrations)
   - [Possible Future Extensions](#possible-future-extensions)
   - [Set Up](#set-up)
   - [Contributors](#contributors)
+  - [Reflections](#reflections)
   - [Project Specs](#project-specs)
 
 ## Introduction
@@ -23,9 +25,16 @@ Mod 1: Final Solo Project
   - CSS
 
 ## Features
-
+   
+   - Two Players can play!
    - The scores are stored locally so no one loses their score!
-   - 
+   
+## Code Architecture
+  - The player.js file writes the class for the player instances that hold the method for saving to localStorage and retrieving from localStorage
+  - The game.js file write the class for the Game instance and has two player instances as its arguement. Here the Data Model for the game is manipulated and stored. It checks for winning conditions, updates the players turns, updates the position of each player in an array, clears the board, and checks for a draw. 
+  - The main.js file writes the DOM that represents the Data Model on the webpage. It renders the HTML files to represent the players positions and updates the winner's score. On pageload, it updates the winners scores that have been saved on localStorage from player's class. 
+  - The HTML is the structure of how the web page is built.
+  - The CSS styles the structure to have seperate columns and uses a grid for the gameboard. 
 
 ## Illustrations
 
@@ -49,6 +58,9 @@ A hand illustrated wireframe based off the comp given.
 
 ## Contributors
   - [Hayley Dixon](https://github.com/hheyhhay)
+
+## Reflections
+Producing my first multiplayer interactive game by myself was both exciting and difficult. I am much more confident in my JavaScript and HTML writing skills than my CSS. I made sure I allowed for time at the end of the project to refractor my CSS to make the sections interact and flex with eachother. Handdrawing my wireframe helped me understand what sections went together and how the different sections interacted with eachother. For my next project, I would like to explore and use wireframe technology, like miro.com. For my JavaScript, I built the data model first in the Player and Game class that could be played using the console. After the classes were built, I developed the DOM in the main.js file to show the changes in the data model on the page. In the future, I would like to spend more time building the Data Model first. Once I connected it to the DOM I found several errors in my conditionals for winning the game. 
 
 
 ## Project Specs
