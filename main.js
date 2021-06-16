@@ -47,7 +47,6 @@ function updateCell(event) {
     }
   }
 };
-
 function gameProcess(){
   var currentWinner
   currentGame.checksForWinner();
@@ -102,24 +101,3 @@ function updateWinner(winningPlayer){
     currentGame.catPlayer.saveWinsToStorage();
   }
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
